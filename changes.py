@@ -44,8 +44,8 @@ def hash_collision(k):
         # print("yBitsTotal",yBitsTotal)
     # # xBitsTotal=bin(int(xHash.hexdigest(), scale))[2:].zfill(num_of_bits)
     # # yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:].zfill(num_of_bits)
-    # print("X-BITS-TOTAL: ",xBitsTotal)
-    # print("Y-BITS-TOTAL: ",yBitsTotal)
+    print("X-BITS-TOTAL: ",xBitsTotal)
+    print("Y-BITS-TOTAL: ",yBitsTotal)
     match=False
     while(match==False):
         # print("X-HASH",xBitsTotal)
@@ -53,24 +53,38 @@ def hash_collision(k):
         newK=len(xBitsTotal)-k
         yLastKbits=yBitsTotal[newK:len(yBitsTotal)]
         xLastKbits=xBitsTotal[newK:len(xBitsTotal)]
-        # print("yLastKbits",yLastKbits)
-        # print("xLastKbits",xLastKbits)
+        print("yLastKbits",yLastKbits)
+        print("xLastKbits",xLastKbits)
         if(yLastKbits==xLastKbits):
             match=True
         else:
             y = os.urandom(64)
             yBitsTotal=""
-            # print("REPeat-Y: ",y)
+            print("REPeat-Y: ",y)
             for o in y:
                 yHash = hashlib.sha256("0".encode('utf-8'))
                 yHash.update(str(bin(o)[2:].zfill(num_of_bits)).encode('utf-8'))
-            # print("YYY-HASH: ",yHash.hexdigest())
+            print("YYY-HASH: ",yHash.hexdigest())
             for yNumRep in yHash.hexdigest():
                 # print("L",bin(int(l,scale))[2:].zfill(4))
                 yBitsTotal=yBitsTotal+bin(int(yNumRep,scale))[2:].zfill(4)
-            # print("YYY-TOTAL: ",yBitsTotal) 
+            print("YYY-TOTAL: ",yBitsTotal) 
         # print("yRepeat",yBitsTotal)
-        # print("MATCH",match)
+        print("MATCH",match)
+        
+        
+    # print("B",bin(3)[2:].zfill(8))
+    # print("Y",y)
+    # for i in range(k,len(x)):
+    #     m.update(x)
+    
+    # print("HASH",hashlib.sha256(y).hexdigest())
+        # hashlib.sha256(x[i].encode('utf-8')).hexdigest()
+    # if()
+    # }
+    # byte_str = str.encode('utf-8')
+    # print("Final-X",xBitsTotal.encode('utf-8'))
+    # print("Final-Y",yBitsTotal.encode('utf-8'))
     x=xBitsTotal.encode('utf-8')
     y=yBitsTotal.encode('utf-8')
     return( x, y )
