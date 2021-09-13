@@ -31,8 +31,8 @@ def hash_collision(k):
         
     x=xBitsTotal.encode('utf-8')
     y=yBitsTotal.encode('utf-8')
-    print("X: ",x)
-    print("Y: ",y)
+    # print("X: ",x)
+    # print("Y: ",y)
     return( x, y )
 
 hash_collision(20)
