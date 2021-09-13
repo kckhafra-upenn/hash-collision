@@ -39,7 +39,10 @@ def hash_collision(k):
             match=True
         else:
             y = os.urandom(64)
-            yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:].zfill(num_of_bits)
+            yHashRep = hashlib.sha256()
+            for m in y:
+                yHashRep.update(str(bin(m)[2:].zfill(num_of_bits)).encode('utf-8'))
+            yBitsTotal=bin(int(yHashRep.hexdigest(), scale))[2:].zfill(num_of_bits)
         
     x=xBitsTotal.encode('utf-8')
     y=yBitsTotal.encode('utf-8')
