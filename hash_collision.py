@@ -12,7 +12,7 @@ def hash_collision(k):
     #Collision finding code goes here
     x = os.urandom(64)
     y = os.urandom(64)
-    print(x)
+
     scale = 16 ## equals to hexadecimal
     num_of_bits = 4
     xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
