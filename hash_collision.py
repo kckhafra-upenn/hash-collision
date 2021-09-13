@@ -56,6 +56,6 @@ def hash_collision(k):
     y=yBitsTotal.encode('utf-8')
     return( x, y )
 
-hash_collision(5)
+# hash_collision(5)
 
 
