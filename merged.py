@@ -16,12 +16,10 @@ def hash_collision(k):
     yHash = hashlib.sha256()
     scale = 16 ## equals to hexadecimal
     num_of_bits = 8
-    for i in x:
-        xHash.update(str(bin(i)[2:].zfill(num_of_bits)).encode('utf-8'))
-
-    for m in y:
-        yHash.update(str(bin(m)[2:].zfill(num_of_bits)).encode('utf-8'))
-
+    for i in range(0,len(x)):
+        xHash.update(str(bin(x[i])[2:].zfill(num_of_bits)).encode('utf-8'))
+        yHash.update(str(bin(y[i])[2:].zfill(num_of_bits)).encode('utf-8'))
+        
     xBitsTotal=bin(int(xHash.hexdigest(), scale))[2:]
     yBitsTotal=bin(int(yHash.hexdigest(), scale))[2:]
     
