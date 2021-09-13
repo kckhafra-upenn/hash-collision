@@ -12,17 +12,22 @@ def hash_collision(k):
     #Collision finding code goes here
     x = os.urandom(64)
     y = os.urandom(64)
+    print(x)
     scale = 16 ## equals to hexadecimal
     num_of_bits = 4
-    xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:].zfill(num_of_bits)
-    yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:].zfill(num_of_bits)
-
+    xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
+    yBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
+    
+    print("X: ",xBitsTotal)
+    print("Y: ",yBitsTotal)
     
     match=False
     while(match==False):
         newK=len(xBitsTotal)-k
-        yLastKbits=yBitsTotal[newK:len(yBitsTotal)]
-        xLastKbits=xBitsTotal[newK:len(xBitsTotal)]
+        yLastKbits=yBitsTotal[newK:len(yBitsTotal)+1]
+        xLastKbits=xBitsTotal[newK:len(xBitsTotal)+1]
+        # print("YLAST: ",yLastKbits)
+        # print("XLAST: ",xLastKbits)
         if(yLastKbits==xLastKbits):
             match=True
         else:
@@ -35,6 +40,6 @@ def hash_collision(k):
     # print("Y: ",y)
     return( x, y )
 
-hash_collision(20)
+hash_collision(4)
 
 
