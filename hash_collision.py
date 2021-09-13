@@ -10,6 +10,8 @@ def hash_collision(k):
         return( b'\x00',b'\x00' )
    
     #Collision finding code goes here
+    x = b'\x00'
+    y = b'\x00'
     x = os.urandom(64)
     y = os.urandom(64)
     xHash = hashlib.sha256()
