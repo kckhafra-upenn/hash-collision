@@ -18,8 +18,8 @@ def hash_collision(k):
     xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
     yBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
     
-    print("X: ",xBitsTotal)
-    print("Y: ",yBitsTotal)
+    # print("X: ",xBitsTotal)
+    # print("Y: ",yBitsTotal)
     
     match=False
     while(match==False):
