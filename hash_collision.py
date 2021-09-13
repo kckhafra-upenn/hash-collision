@@ -40,6 +40,6 @@ def hash_collision(k):
     # print("Y: ",y)
     return( x, y )
 
-hash_collision(4)
+
 
 
