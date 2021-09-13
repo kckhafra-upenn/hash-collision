@@ -14,23 +14,28 @@ def hash_collision(k):
     y = b'\x00'
     x = os.urandom(64)
     y = os.urandom(64)
-    xHash = hashlib.sha256()
-    yHash = hashlib.sha256()
+    # xHash = hashlib.sha256()
+    # yHash = hashlib.sha256()
     scale = 16 ## equals to hexadecimal
     num_of_bits = 8
     xBitsTotal=""
     yBitsTotal=""
-    for i in x:
-        xHash.update(str(bin(i)[2:].zfill(num_of_bits)).encode('utf-8'))
+    xHash=hashlib.sha256(x).hexdigest()
+    yHash=hashlib.sha256(y).hexdigest()
+    # for i in x:
+    #     xHash.update(str(bin(i)[2:].zfill(num_of_bits)).encode('utf-8'))
 
-    for m in y:
-        yHash.update(str(bin(m)[2:].zfill(num_of_bits)).encode('utf-8'))
+    # for m in y:
+    #     yHash.update(str(bin(m)[2:].zfill(num_of_bits)).encode('utf-8'))
     
-    for xNum in xHash.hexdigest():
+    for xNum in xHash:
         xBitsTotal=xBitsTotal+bin(int(xNum,scale))[2:].zfill(4)
+        # print(xBitsTotal)
+        # print(xNum)
         
-    for yNum in yHash.hexdigest():
+    for yNum in yHash:
         yBitsTotal=yBitsTotal+bin(int(yNum,scale))[2:].zfill(4)
+        # print(yBitsTotal)
 
     # xBitsTotal=bin(int(xHash.hexdigest(), scale))[2:]
     # yBitsTotal=bin(int(yHash.hexdigest(), scale))[2:]
@@ -66,4 +71,4 @@ def hash_collision(k):
     return( x, y )
 
 
-hash_collision(15)
+# hash_collision(15)
