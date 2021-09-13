@@ -28,13 +28,13 @@ def hash_collision(k):
     # for m in y:
     #     yHash.update(str(bin(m)[2:].zfill(num_of_bits)).encode('utf-8'))
     
-    for xNum in xHash:
-        xBitsTotal=xBitsTotal+bin(int(xNum,scale))[2:].zfill(4)
-        # print(xBitsTotal)
-        # print(xNum)
+    # for xNum in xHash:
+    #     xBitsTotal=xBitsTotal+bin(int(xNum,scale))[2:].zfill(4)
+    #     print(xBitsTotal)
+    #     # print(xNum)
         
-    for yNum in yHash:
-        yBitsTotal=yBitsTotal+bin(int(yNum,scale))[2:].zfill(4)
+    # for yNum in yHash:
+    #     yBitsTotal=yBitsTotal+bin(int(yNum,scale))[2:].zfill(4)
         # print(yBitsTotal)
 
     # xBitsTotal=bin(int(xHash.hexdigest(), scale))[2:]
@@ -42,26 +42,23 @@ def hash_collision(k):
     
     # print("X: ",xBitsTotal)
     # print("Y: ",yBitsTotal)
+    xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
+    yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:]
     
     match=False
     while(match==False):
         newK=len(xBitsTotal)-k
-        yLastKbits=yBitsTotal[newK:len(yBitsTotal)+1]
-        xLastKbits=xBitsTotal[newK:len(xBitsTotal)+1]
-        # print("YLAST: ",yLastKbits)
-        # print("XLAST: ",xLastKbits)
+        yLastKbits=yBitsTotal[newK:len(yBitsTotal)]
+        xLastKbits=xBitsTotal[newK:len(xBitsTotal)]
+        print("YLAST: ",yLastKbits)
+        print("XLAST: ",xLastKbits)
         if(yLastKbits==xLastKbits):
             match=True
         else:
-            yBitsTotal=""
             y = os.urandom(64)
-            yHashRep = hashlib.sha256()
+            yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:]
             
-            for i in range(0,len(y)):
-                yHashRep.update(str(bin(y[i])[2:].zfill(num_of_bits)).encode('utf-8'))
-
-            for yNumRep in yHashRep.hexdigest():
-                yBitsTotal=yBitsTotal+bin(int(yNumRep,scale))[2:].zfill(4)
+            
             
         
     # x=xBitsTotal.encode('utf-8')
@@ -71,4 +68,4 @@ def hash_collision(k):
     return( x, y )
 
 
-# hash_collision(15)
+hash_collision(5)
