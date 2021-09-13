@@ -15,7 +15,7 @@ def hash_collision(k):
     yBitsTotal=""
     xBitsTotal=""
     # print("RANDOM1: ",x)
-    print("RANDOM2: ",y)
+    # print("RANDOM2: ",y)
     match=False
     while(match==False):
         yBitsTotal=""
@@ -33,8 +33,8 @@ def hash_collision(k):
         newK=k*8
         yLastKbits=yBitsTotal[newK:len(yBitsTotal)]
         xLastKbits=xBitsTotal[newK:len(xBitsTotal)]
-        print("LAST-Y: ",yLastKbits)
-        print("LAST-X: ",xLastKbits)
+        # print("LAST-Y: ",yLastKbits)
+        # print("LAST-X: ",xLastKbits)
         # print("COND",yLastKbits==xLastKbits)
         if(yLastKbits==xLastKbits):
             match=True
@@ -48,15 +48,15 @@ def hash_collision(k):
     # print("Y",y)
     # for i in range(k,len(x)):
     #     m.update(x)
-    print("HASH",hashlib.sha256(x).hexdigest())
-    print("HASH",hashlib.sha256(y).hexdigest())
+    # print("HASH",hashlib.sha256(x).hexdigest())
+    # print("HASH",hashlib.sha256(y).hexdigest())
     # print("HASH",hashlib.sha256(y).hexdigest())
         # hashlib.sha256(x[i].encode('utf-8')).hexdigest()
     # if()
     # }
     # byte_str = str.encode('utf-8')
-    print("Final-X",xBitsTotal.encode('utf-8'))
-    print("Final-Y",yBitsTotal.encode('utf-8'))
+    # print("Final-X",xBitsTotal.encode('utf-8'))
+    # print("Final-Y",yBitsTotal.encode('utf-8'))
     x=xBitsTotal.encode('utf-8')
     y=yBitsTotal.encode('utf-8')
     return( x, y )
