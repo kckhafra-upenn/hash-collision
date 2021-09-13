@@ -14,7 +14,7 @@ def hash_collision(k):
     y = os.urandom(64)
 
     scale = 16 ## equals to hexadecimal
-    num_of_bits = 4
+    num_of_bits = 8
     xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
     yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:]
     
