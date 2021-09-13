@@ -22,8 +22,8 @@ def hash_collision(k):
     for m in y:
         yHash.update(str(bin(m)[2:].zfill(num_of_bits)).encode('utf-8'))
 
-    xBitsTotal=xHash.hexdigest()
-    yBitsTotal=yHash.hexdigest()
+    xBitsTotal=bin(int(xHash.hexdigest(), scale))[2:]
+    yBitsTotal=bin(int(yHash.hexdigest(), scale))[2:]
     
     # print("X: ",xBitsTotal)
     # print("Y: ",yBitsTotal)
@@ -33,8 +33,8 @@ def hash_collision(k):
         newK=len(xBitsTotal)-k
         yLastKbits=yBitsTotal[newK:len(yBitsTotal)+1]
         xLastKbits=xBitsTotal[newK:len(xBitsTotal)+1]
-        print("YLAST: ",yLastKbits)
-        print("XLAST: ",xLastKbits)
+        # print("YLAST: ",yLastKbits)
+        # print("XLAST: ",xLastKbits)
         if(yLastKbits==xLastKbits):
             match=True
         else:
@@ -42,7 +42,7 @@ def hash_collision(k):
             yHashRep = hashlib.sha256()
             for m in y:
                 yHashRep.update(str(bin(m)[2:].zfill(num_of_bits)).encode('utf-8'))
-            yBitsTotal=yHashRep.hexdigest()
+            yBitsTotal=bin(int(yHashRep.hexdigest(), scale))[2:].zfill(num_of_bits)
         
     x=xBitsTotal.encode('utf-8')
     y=yBitsTotal.encode('utf-8')
@@ -51,4 +51,4 @@ def hash_collision(k):
     return( x, y )
 
 
-hash_collision(10)
+# hash_collision(15)
