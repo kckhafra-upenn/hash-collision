@@ -16,30 +16,29 @@ def hash_collision(k):
     xBitsTotal=""
     # print("RANDOM1: ",x)
     # print("RANDOM2: ",y)
+    scale = 16 ## equals to hexadecimal
+    num_of_bits = 8
+    xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:].zfill(num_of_bits)
+    yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:].zfill(num_of_bits)
+    # print("X-HASH",xBitsTotal)
+    # print("Y-HASH",yBitsTotal)
     match=False
     while(match==False):
-        yBitsTotal=""
-        xBitsTotal=""
-        # print("YY",y)
-        for i in range(0,len(y)):
-            ybits = bin(y[i])[2:].zfill(8)
-            xbits = bin(x[i])[2:].zfill(8)
-            yBitsTotal = yBitsTotal+ybits
-            xBitsTotal = xBitsTotal+xbits
-            # print(i,bits)
-        #y=y[k:len(x)]
-        # print("XBITS: ",xBitsTotal)
-        # print("YBITS: ",yBitsTotal)
-        newK=k*8
+        # for i in range(0,len(y)):
+            # ybits = bin(y[i])[2:].zfill(8)
+            # xbits = bin(x[i])[2:].zfill(8)
+            # yBitsTotal = yBitsTotal+ybits
+            # xBitsTotal = xBitsTotal+xbits
+        newK=k*4
         yLastKbits=yBitsTotal[newK:len(yBitsTotal)]
         xLastKbits=xBitsTotal[newK:len(xBitsTotal)]
-        # print("LAST-Y: ",yLastKbits)
-        # print("LAST-X: ",xLastKbits)
-        # print("COND",yLastKbits==xLastKbits)
+        # print("yLastKbits",yLastKbits)
+        # print("xLastKbits",xLastKbits)
         if(yLastKbits==xLastKbits):
             match=True
         else:
             y = os.urandom(64)
+            yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:].zfill(num_of_bits)
         # print("y",y)
         # print("MATCH",match)
         
@@ -48,8 +47,7 @@ def hash_collision(k):
     # print("Y",y)
     # for i in range(k,len(x)):
     #     m.update(x)
-    # print("HASH",hashlib.sha256(x).hexdigest())
-    # print("HASH",hashlib.sha256(y).hexdigest())
+    
     # print("HASH",hashlib.sha256(y).hexdigest())
         # hashlib.sha256(x[i].encode('utf-8')).hexdigest()
     # if()
@@ -61,6 +59,6 @@ def hash_collision(k):
     y=yBitsTotal.encode('utf-8')
     return( x, y )
 
-
+hash_collision(20)
 
 
