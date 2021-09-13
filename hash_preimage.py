@@ -26,7 +26,7 @@ def hash_preimage(target_string):
         else:
             x = os.urandom(64)
             xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
-    # print(x)
+    print(x)
     return(x)
 
-hash_preimage("01011100")
+# hash_preimage("01011100")
