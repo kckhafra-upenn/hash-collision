@@ -12,53 +12,27 @@ def hash_collision(k):
     #Collision finding code goes here
     x = os.urandom(64)
     y = os.urandom(64)
-    yBitsTotal=""
-    xBitsTotal=""
-    # print("RANDOM1: ",x)
-    # print("RANDOM2: ",y)
     scale = 16 ## equals to hexadecimal
     num_of_bits = 8
     xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:].zfill(num_of_bits)
     yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:].zfill(num_of_bits)
-    # print("X-HASH",xBitsTotal)
-    # print("Y-HASH",yBitsTotal)
+
+    
     match=False
     while(match==False):
-        # for i in range(0,len(y)):
-            # ybits = bin(y[i])[2:].zfill(8)
-            # xbits = bin(x[i])[2:].zfill(8)
-            # yBitsTotal = yBitsTotal+ybits
-            # xBitsTotal = xBitsTotal+xbits
-        newK=k*4
+        newK=len(xBitsTotal)-k
         yLastKbits=yBitsTotal[newK:len(yBitsTotal)]
         xLastKbits=xBitsTotal[newK:len(xBitsTotal)]
-        # print("yLastKbits",yLastKbits)
-        # print("xLastKbits",xLastKbits)
         if(yLastKbits==xLastKbits):
             match=True
         else:
             y = os.urandom(64)
             yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:].zfill(num_of_bits)
-        # print("y",y)
-        # print("MATCH",match)
         
-        
-    # print("B",bin(3)[2:].zfill(8))
-    # print("Y",y)
-    # for i in range(k,len(x)):
-    #     m.update(x)
-    
-    # print("HASH",hashlib.sha256(y).hexdigest())
-        # hashlib.sha256(x[i].encode('utf-8')).hexdigest()
-    # if()
-    # }
-    # byte_str = str.encode('utf-8')
-    # print("Final-X",xBitsTotal.encode('utf-8'))
-    # print("Final-Y",yBitsTotal.encode('utf-8'))
     x=xBitsTotal.encode('utf-8')
     y=yBitsTotal.encode('utf-8')
     return( x, y )
 
-hash_collision(20)
+hash_collision(5)
 
 
