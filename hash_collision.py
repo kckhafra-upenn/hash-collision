@@ -16,7 +16,7 @@ def hash_collision(k):
     scale = 16 ## equals to hexadecimal
     num_of_bits = 4
     xBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
-    yBitsTotal=bin(int(hashlib.sha256(x).hexdigest(), scale))[2:]
+    yBitsTotal=bin(int(hashlib.sha256(y).hexdigest(), scale))[2:]
     
     # print("X: ",xBitsTotal)
     # print("Y: ",yBitsTotal)
@@ -41,5 +41,5 @@ def hash_collision(k):
     return( x, y )
 
 
-
+hash_collision(2)
 
