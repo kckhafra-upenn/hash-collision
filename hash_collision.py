@@ -50,8 +50,8 @@ def hash_collision(k):
         newK=len(xBitsTotal)-k
         yLastKbits=yBitsTotal[newK:len(yBitsTotal)]
         xLastKbits=xBitsTotal[newK:len(xBitsTotal)]
-        print("YLAST: ",yLastKbits)
-        print("XLAST: ",xLastKbits)
+        # print("YLAST: ",yLastKbits)
+        # print("XLAST: ",xLastKbits)
         if(yLastKbits==xLastKbits):
             match=True
         else:
@@ -68,4 +68,4 @@ def hash_collision(k):
     return( x, y )
 
 
-hash_collision(5)
+# hash_collision(5)
